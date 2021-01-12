@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>多进程日志 | FeelingLive</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/assets/img/logo/logo.png">
+    <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?966c32065299cfcd0ae5ae2eae1aa280";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();            
+          </script>
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.57bcb71c.css" as="style"><link rel="preload" href="/assets/js/app.b8069efc.js" as="script"><link rel="preload" href="/assets/js/2.463f0d24.js" as="script"><link rel="preload" href="/assets/js/53.b63a6ed6.js" as="script"><link rel="prefetch" href="/assets/js/10.0762cba9.js"><link rel="prefetch" href="/assets/js/11.4708d5da.js"><link rel="prefetch" href="/assets/js/12.c6cafa54.js"><link rel="prefetch" href="/assets/js/13.d8200bdf.js"><link rel="prefetch" href="/assets/js/14.8064c10f.js"><link rel="prefetch" href="/assets/js/15.9243c1a6.js"><link rel="prefetch" href="/assets/js/16.f6f1013c.js"><link rel="prefetch" href="/assets/js/17.fc230ff5.js"><link rel="prefetch" href="/assets/js/18.f5401d4b.js"><link rel="prefetch" href="/assets/js/19.97ad76e6.js"><link rel="prefetch" href="/assets/js/20.c04d5e36.js"><link rel="prefetch" href="/assets/js/21.3a377e15.js"><link rel="prefetch" href="/assets/js/22.4f0e9918.js"><link rel="prefetch" href="/assets/js/23.8f5b85c7.js"><link rel="prefetch" href="/assets/js/24.e0dea9d9.js"><link rel="prefetch" href="/assets/js/25.6e5a4514.js"><link rel="prefetch" href="/assets/js/26.f1eb71b3.js"><link rel="prefetch" href="/assets/js/27.648fe148.js"><link rel="prefetch" href="/assets/js/28.0f4106c7.js"><link rel="prefetch" href="/assets/js/29.13fab01e.js"><link rel="prefetch" href="/assets/js/3.42c89626.js"><link rel="prefetch" href="/assets/js/30.776c58af.js"><link rel="prefetch" href="/assets/js/31.9d1301f0.js"><link rel="prefetch" href="/assets/js/32.720f8e3c.js"><link rel="prefetch" href="/assets/js/33.3e536bad.js"><link rel="prefetch" href="/assets/js/34.eb929122.js"><link rel="prefetch" href="/assets/js/35.d6c75691.js"><link rel="prefetch" href="/assets/js/36.d1359dcd.js"><link rel="prefetch" href="/assets/js/37.af9dcad6.js"><link rel="prefetch" href="/assets/js/38.4dcdfb0e.js"><link rel="prefetch" href="/assets/js/39.a11a56c7.js"><link rel="prefetch" href="/assets/js/4.32e9b2cd.js"><link rel="prefetch" href="/assets/js/40.99b7368a.js"><link rel="prefetch" href="/assets/js/41.6b4e41f7.js"><link rel="prefetch" href="/assets/js/42.01f4bb4d.js"><link rel="prefetch" href="/assets/js/43.395f4458.js"><link rel="prefetch" href="/assets/js/44.6ffa66fa.js"><link rel="prefetch" href="/assets/js/45.e29df2ce.js"><link rel="prefetch" href="/assets/js/46.72ff2f55.js"><link rel="prefetch" href="/assets/js/47.8ffb0064.js"><link rel="prefetch" href="/assets/js/48.2ca0eabc.js"><link rel="prefetch" href="/assets/js/49.9b2c63ae.js"><link rel="prefetch" href="/assets/js/5.92edf24a.js"><link rel="prefetch" href="/assets/js/50.115e85f5.js"><link rel="prefetch" href="/assets/js/51.8f5cbf89.js"><link rel="prefetch" href="/assets/js/52.4a6fde6e.js"><link rel="prefetch" href="/assets/js/54.fbb07875.js"><link rel="prefetch" href="/assets/js/55.e995daf3.js"><link rel="prefetch" href="/assets/js/56.15951fbe.js"><link rel="prefetch" href="/assets/js/57.4c91e795.js"><link rel="prefetch" href="/assets/js/58.02114ca3.js"><link rel="prefetch" href="/assets/js/6.0b766ead.js"><link rel="prefetch" href="/assets/js/7.beb00bfa.js"><link rel="prefetch" href="/assets/js/8.e469995f.js"><link rel="prefetch" href="/assets/js/9.35927e25.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.57bcb71c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo/logo.png" alt="FeelingLive" class="logo"> <span class="site-name">FeelingLive</span></a> <nav class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <ul class="nav-links can-hide"><li class="nav-item"><a href="/" class="nav-link"><!----> <span>主页</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><!----> <span class="title">
+      Python
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><!----> <span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/python/coroutine/" class="nav-link"><!----> <span>协程</span></a></li><li class="dropdown-item"><!----> <a href="/python/advance/" class="nav-link"><!----> <span>进阶</span></a></li><li class="dropdown-item"><!----> <a href="/python/standard/" class="nav-link"><!----> <span>标准库</span></a></li><li class="dropdown-item"><!----> <a href="/python/restFramework/" class="nav-link"><!----> <span>REST Framework</span></a></li><li class="dropdown-item"><!----> <a href="/python/utils/" class="nav-link"><!----> <span>各种工具</span></a></li><li class="dropdown-item"><!----> <a href="/python/skill/" class="nav-link router-link-active"><!----> <span>使用技巧和例子</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title">
+      Java
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><!----> <span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/basis/" class="nav-link"><!----> <span>基础</span></a></li></ul></div></li><li class="nav-item"><a href="/linux/" class="nav-link"><!----> <span>Linux</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title">
+      中间件
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><!----> <span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/middle/elasticsearch/" class="nav-link"><!----> <span>Elasticsearch</span></a></li><li class="dropdown-item"><!----> <a href="/middle/nginx/" class="nav-link"><!----> <span>Nginx</span></a></li><li class="dropdown-item"><!----> <a href="/middle/kafka/" class="nav-link"><!----> <span>Kafka</span></a></li><li class="dropdown-item"><!----> <a href="/middle/f5/" class="nav-link"><!----> <span>F5</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title">
+      数据库
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><!----> <span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/database/mysql/" class="nav-link"><!----> <span>MySQL</span></a></li><li class="dropdown-item"><!----> <a href="/database/redis/" class="nav-link"><!----> <span>Redis</span></a></li></ul></div></li><li class="nav-item"><a href="https://github.com/xuqil" target="_blank" rel="noopener noreferrer" class="nav-link external"><!----> <span>Git Hub</span> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <!----></ul> <div class="theme-switcher"><a class="switch dark"><span><i aria-hidden="true" class="fa fa-moon"></i></span></a></div></nav></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!----> <ul class="nav-links"><li class="nav-item"><a href="/" class="nav-link"><!----> <span>主页</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><!----> <span class="title">
+      Python
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><!----> <span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/python/coroutine/" class="nav-link"><!----> <span>协程</span></a></li><li class="dropdown-item"><!----> <a href="/python/advance/" class="nav-link"><!----> <span>进阶</span></a></li><li class="dropdown-item"><!----> <a href="/python/standard/" class="nav-link"><!----> <span>标准库</span></a></li><li class="dropdown-item"><!----> <a href="/python/restFramework/" class="nav-link"><!----> <span>REST Framework</span></a></li><li class="dropdown-item"><!----> <a href="/python/utils/" class="nav-link"><!----> <span>各种工具</span></a></li><li class="dropdown-item"><!----> <a href="/python/skill/" class="nav-link router-link-active"><!----> <span>使用技巧和例子</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title">
+      Java
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><!----> <span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/basis/" class="nav-link"><!----> <span>基础</span></a></li></ul></div></li><li class="nav-item"><a href="/linux/" class="nav-link"><!----> <span>Linux</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title">
+      中间件
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><!----> <span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/middle/elasticsearch/" class="nav-link"><!----> <span>Elasticsearch</span></a></li><li class="dropdown-item"><!----> <a href="/middle/nginx/" class="nav-link"><!----> <span>Nginx</span></a></li><li class="dropdown-item"><!----> <a href="/middle/kafka/" class="nav-link"><!----> <span>Kafka</span></a></li><li class="dropdown-item"><!----> <a href="/middle/f5/" class="nav-link"><!----> <span>F5</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title">
+      数据库
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><!----> <span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/database/mysql/" class="nav-link"><!----> <span>MySQL</span></a></li><li class="dropdown-item"><!----> <a href="/database/redis/" class="nav-link"><!----> <span>Redis</span></a></li></ul></div></li><li class="nav-item"><a href="https://github.com/xuqil" target="_blank" rel="noopener noreferrer" class="nav-link external"><!----> <span>Git Hub</span> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <!----></ul>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><i></i> <span>使用技巧和例子</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/python/skill/" aria-current="page" class="sidebar-link">python的一些使用技巧和例子</a></li><li><a href="/python/skill/列表间比较差异性.html" class="sidebar-link">列表间比较差异性</a></li><li><a href="/python/skill/多进程日志.html" class="active sidebar-link">多进程日志</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/python/skill/多进程日志.html#方案一" class="sidebar-link">方案一</a></li><li class="sidebar-sub-header"><a href="/python/skill/多进程日志.html#方案二" class="sidebar-link">方案二</a></li><li class="sidebar-sub-header"><a href="/python/skill/多进程日志.html#方案三" class="sidebar-link">方案三</a></li></ul></li><li><a href="/python/skill/正则表达式匹配例子.html" class="sidebar-link">正则表达式匹配例子</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-vpx-content content__default"><h1 id="多进程日志"><a href="#多进程日志" class="header-anchor">#</a> 多进程日志</h1> <p>https://docs.python.org/zh-cn/3/howto/logging-cookbook.html#logging-cookbook</p> <p>尽管 logging 是线程安全的，将单个进程中的多个线程日志记录至单个文件也 是 受支持的，但将 多个进程 中的日志记录至单个文件则 不是 受支持的，因为在 Python 中并没有在多个进程中实现对单个文件访问的序列化的标准方案。</p> <p><strong>如果需要将多个进程中的日志记录至单个文件，有这几个方案</strong></p> <h2 id="方案一"><a href="#方案一" class="header-anchor">#</a> 方案一</h2> <p>让所有进程都将日志记录至一个 SocketHandler，然后用一个实现了套接字服务器的单独进程一边从套接字中读取一边将日志记录至文件。 （如果愿意的话，你可以在一个现有进程中专门开一个线程来执行此项功能。）</p> <h2 id="方案二"><a href="#方案二" class="header-anchor">#</a> 方案二</h2> <p>编写你自己的处理程序，让其使用 multiprocessing 模块中的 Lock 类来顺序访问你的多个进程中的文件。</p> <h2 id="方案三"><a href="#方案三" class="header-anchor">#</a> 方案三</h2> <p>使用 Queue 和 QueueHandler 将所有的日志事件发送至你的多进程应用的一个进程中。</p> <p>以下示例脚本演示了如何执行此操作。 在示例中，一个单独的监听进程负责监听其他进程的日志事件，并根据自己的配置记录。 尽管示例只演示了这种方法（例如你可能希望使用单独的监听线程而非监听进程 —— 它们的实现是类似的），但你也可以在应用程序的监听进程和其他进程使用不同的配置，它可以作为满足你特定需求的一个基础:</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># You'll need these imports in your own code</span>
+<span class="token keyword">import</span> logging
+<span class="token keyword">import</span> logging<span class="token punctuation">.</span>handlers
+<span class="token keyword">import</span> multiprocessing
+
+<span class="token comment"># Next two import lines for this demo only</span>
+<span class="token keyword">from</span> random <span class="token keyword">import</span> choice<span class="token punctuation">,</span> random
+<span class="token keyword">import</span> time
+
+<span class="token comment">#</span>
+<span class="token comment"># Because you'll want to define the logging configurations for listener and workers, the</span>
+<span class="token comment"># listener and worker process functions take a configurer parameter which is a callable</span>
+<span class="token comment"># for configuring logging for that process. These functions are also passed the queue,</span>
+<span class="token comment"># which they use for communication.</span>
+<span class="token comment">#</span>
+<span class="token comment"># In practice, you can configure the listener however you want, but note that in this</span>
+<span class="token comment"># simple example, the listener does not apply level or filter logic to received records.</span>
+<span class="token comment"># In practice, you would probably want to do this logic in the worker processes, to avoid</span>
+<span class="token comment"># sending events which would be filtered out between processes.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The size of the rotated files is made small so you can see the results easily.</span>
+<span class="token keyword">def</span> <span class="token function">listener_configurer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    root <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    h <span class="token operator">=</span> logging<span class="token punctuation">.</span>handlers<span class="token punctuation">.</span>RotatingFileHandler<span class="token punctuation">(</span><span class="token string">'mptest.log'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+    f <span class="token operator">=</span> logging<span class="token punctuation">.</span>Formatter<span class="token punctuation">(</span><span class="token string">'%(asctime)s %(processName)-10s %(name)s %(levelname)-8s %(message)s'</span><span class="token punctuation">)</span>
+    h<span class="token punctuation">.</span>setFormatter<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    root<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>h<span class="token punctuation">)</span>
+
+<span class="token comment"># This is the listener process top-level loop: wait for logging events</span>
+<span class="token comment"># (LogRecords)on the queue and handle them, quit when you get a None for a</span>
+<span class="token comment"># LogRecord.</span>
+<span class="token keyword">def</span> <span class="token function">listener_process</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> configurer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    configurer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            record <span class="token operator">=</span> queue<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> record <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>  <span class="token comment"># We send this as a sentinel to tell the listener to quit.</span>
+                <span class="token keyword">break</span>
+            logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>record<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+            logger<span class="token punctuation">.</span>handle<span class="token punctuation">(</span>record<span class="token punctuation">)</span>  <span class="token comment"># No level or filter logic applied - just do it!</span>
+        <span class="token keyword">except</span> Exception<span class="token punctuation">:</span>
+            <span class="token keyword">import</span> sys<span class="token punctuation">,</span> traceback
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Whoops! Problem:'</span><span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token operator">=</span>sys<span class="token punctuation">.</span>stderr<span class="token punctuation">)</span>
+            traceback<span class="token punctuation">.</span>print_exc<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token operator">=</span>sys<span class="token punctuation">.</span>stderr<span class="token punctuation">)</span>
+
+<span class="token comment"># Arrays used for random selections in this demo</span>
+
+LEVELS <span class="token operator">=</span> <span class="token punctuation">[</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">,</span> logging<span class="token punctuation">.</span>INFO<span class="token punctuation">,</span> logging<span class="token punctuation">.</span>WARNING<span class="token punctuation">,</span>
+          logging<span class="token punctuation">.</span>ERROR<span class="token punctuation">,</span> logging<span class="token punctuation">.</span>CRITICAL<span class="token punctuation">]</span>
+
+LOGGERS <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a.b.c'</span><span class="token punctuation">,</span> <span class="token string">'d.e.f'</span><span class="token punctuation">]</span>
+
+MESSAGES <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'Random message #1'</span><span class="token punctuation">,</span>
+    <span class="token string">'Random message #2'</span><span class="token punctuation">,</span>
+    <span class="token string">'Random message #3'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment"># The worker configuration is done at the start of the worker process run.</span>
+<span class="token comment"># Note that on Windows you can't rely on fork semantics, so each process</span>
+<span class="token comment"># will run the logging configuration code when it starts.</span>
+<span class="token keyword">def</span> <span class="token function">worker_configurer</span><span class="token punctuation">(</span>queue<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    h <span class="token operator">=</span> logging<span class="token punctuation">.</span>handlers<span class="token punctuation">.</span>QueueHandler<span class="token punctuation">(</span>queue<span class="token punctuation">)</span>  <span class="token comment"># Just the one handler needed</span>
+    root <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    root<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>h<span class="token punctuation">)</span>
+    <span class="token comment"># send all messages, for demo; no other level or filter logic applied.</span>
+    root<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span>
+
+<span class="token comment"># This is the worker process top-level loop, which just logs ten events with</span>
+<span class="token comment"># random intervening delays before terminating.</span>
+<span class="token comment"># The print messages are just so you know it's doing something!</span>
+<span class="token keyword">def</span> <span class="token function">worker_process</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> configurer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    configurer<span class="token punctuation">(</span>queue<span class="token punctuation">)</span>
+    name <span class="token operator">=</span> multiprocessing<span class="token punctuation">.</span>current_process<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>name
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Worker started: %s'</span> <span class="token operator">%</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>choice<span class="token punctuation">(</span>LOGGERS<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        level <span class="token operator">=</span> choice<span class="token punctuation">(</span>LEVELS<span class="token punctuation">)</span>
+        message <span class="token operator">=</span> choice<span class="token punctuation">(</span>MESSAGES<span class="token punctuation">)</span>
+        logger<span class="token punctuation">.</span>log<span class="token punctuation">(</span>level<span class="token punctuation">,</span> message<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Worker finished: %s'</span> <span class="token operator">%</span> name<span class="token punctuation">)</span>
+
+<span class="token comment"># Here's where the demo gets orchestrated. Create the queue, create and start</span>
+<span class="token comment"># the listener, create ten workers and start them, wait for them to finish,</span>
+<span class="token comment"># then send a None to the queue to tell the listener to finish.</span>
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    queue <span class="token operator">=</span> multiprocessing<span class="token punctuation">.</span>Queue<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    listener <span class="token operator">=</span> multiprocessing<span class="token punctuation">.</span>Process<span class="token punctuation">(</span>target<span class="token operator">=</span>listener_process<span class="token punctuation">,</span>
+                                       args<span class="token operator">=</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> listener_configurer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    workers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        worker <span class="token operator">=</span> multiprocessing<span class="token punctuation">.</span>Process<span class="token punctuation">(</span>target<span class="token operator">=</span>worker_process<span class="token punctuation">,</span>
+                                         args<span class="token operator">=</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> worker_configurer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        workers<span class="token punctuation">.</span>append<span class="token punctuation">(</span>worker<span class="token punctuation">)</span>
+        worker<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> w <span class="token keyword">in</span> workers<span class="token punctuation">:</span>
+        w<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    queue<span class="token punctuation">.</span>put_nowait<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>上面脚本的一个变种，仍然在主进程中记录日志，但使用一个单独的线程:</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> logging
+<span class="token keyword">import</span> logging<span class="token punctuation">.</span>config
+<span class="token keyword">import</span> logging<span class="token punctuation">.</span>handlers
+<span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Process<span class="token punctuation">,</span> Queue
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> threading
+<span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">logger_thread</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        record <span class="token operator">=</span> q<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> record <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>record<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+        logger<span class="token punctuation">.</span>handle<span class="token punctuation">(</span>record<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">worker_process</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    qh <span class="token operator">=</span> logging<span class="token punctuation">.</span>handlers<span class="token punctuation">.</span>QueueHandler<span class="token punctuation">(</span>q<span class="token punctuation">)</span>
+    root <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    root<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span>
+    root<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>qh<span class="token punctuation">)</span>
+    levels <span class="token operator">=</span> <span class="token punctuation">[</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">,</span> logging<span class="token punctuation">.</span>INFO<span class="token punctuation">,</span> logging<span class="token punctuation">.</span>WARNING<span class="token punctuation">,</span> logging<span class="token punctuation">.</span>ERROR<span class="token punctuation">,</span>
+              logging<span class="token punctuation">.</span>CRITICAL<span class="token punctuation">]</span>
+    loggers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'foo.bar'</span><span class="token punctuation">,</span> <span class="token string">'foo.bar.baz'</span><span class="token punctuation">,</span>
+               <span class="token string">'spam'</span><span class="token punctuation">,</span> <span class="token string">'spam.ham'</span><span class="token punctuation">,</span> <span class="token string">'spam.ham.eggs'</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        lvl <span class="token operator">=</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>levels<span class="token punctuation">)</span>
+        logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>loggers<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        logger<span class="token punctuation">.</span>log<span class="token punctuation">(</span>lvl<span class="token punctuation">,</span> <span class="token string">'Message no. %d'</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    q <span class="token operator">=</span> Queue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'version'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">'formatters'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'detailed'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.Formatter'</span><span class="token punctuation">,</span>
+                <span class="token string">'format'</span><span class="token punctuation">:</span> <span class="token string">'%(asctime)s %(name)-15s %(levelname)-8s %(processName)-10s %(message)s'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'console'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.StreamHandler'</span><span class="token punctuation">,</span>
+                <span class="token string">'level'</span><span class="token punctuation">:</span> <span class="token string">'INFO'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'file'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.FileHandler'</span><span class="token punctuation">,</span>
+                <span class="token string">'filename'</span><span class="token punctuation">:</span> <span class="token string">'mplog.log'</span><span class="token punctuation">,</span>
+                <span class="token string">'mode'</span><span class="token punctuation">:</span> <span class="token string">'w'</span><span class="token punctuation">,</span>
+                <span class="token string">'formatter'</span><span class="token punctuation">:</span> <span class="token string">'detailed'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'foofile'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.FileHandler'</span><span class="token punctuation">,</span>
+                <span class="token string">'filename'</span><span class="token punctuation">:</span> <span class="token string">'mplog-foo.log'</span><span class="token punctuation">,</span>
+                <span class="token string">'mode'</span><span class="token punctuation">:</span> <span class="token string">'w'</span><span class="token punctuation">,</span>
+                <span class="token string">'formatter'</span><span class="token punctuation">:</span> <span class="token string">'detailed'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'errors'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.FileHandler'</span><span class="token punctuation">,</span>
+                <span class="token string">'filename'</span><span class="token punctuation">:</span> <span class="token string">'mplog-errors.log'</span><span class="token punctuation">,</span>
+                <span class="token string">'mode'</span><span class="token punctuation">:</span> <span class="token string">'w'</span><span class="token punctuation">,</span>
+                <span class="token string">'level'</span><span class="token punctuation">:</span> <span class="token string">'ERROR'</span><span class="token punctuation">,</span>
+                <span class="token string">'formatter'</span><span class="token punctuation">:</span> <span class="token string">'detailed'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'loggers'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'foo'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'foofile'</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'root'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'level'</span><span class="token punctuation">:</span> <span class="token string">'DEBUG'</span><span class="token punctuation">,</span>
+            <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'console'</span><span class="token punctuation">,</span> <span class="token string">'file'</span><span class="token punctuation">,</span> <span class="token string">'errors'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    workers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        wp <span class="token operator">=</span> Process<span class="token punctuation">(</span>target<span class="token operator">=</span>worker_process<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'worker %d'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        workers<span class="token punctuation">.</span>append<span class="token punctuation">(</span>wp<span class="token punctuation">)</span>
+        wp<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    logging<span class="token punctuation">.</span>config<span class="token punctuation">.</span>dictConfig<span class="token punctuation">(</span>d<span class="token punctuation">)</span>
+    lp <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>logger_thread<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    lp<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># At this point, the main process could do some useful work of its own</span>
+    <span class="token comment"># Once it's done that, it can wait for the workers to terminate...</span>
+    <span class="token keyword">for</span> wp <span class="token keyword">in</span> workers<span class="token punctuation">:</span>
+        wp<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># And now tell the logging thread to finish up, too</span>
+    q<span class="token punctuation">.</span>put<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+    lp<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>这段变种的代码展示了如何使用特定的日志记录配置 - 例如<code>foo</code>记录器使用了特殊的处理程序，将 foo 子系统中所有的事件记录至一个文件 mplog-foo.log。在主进程（即使是在工作进程中产生的日志事件）的日志记录机制中将直接使用恰当的配置。</p> <p>使用进程池Pool时，可以使用<code>multiprocessing.Manager().Queue()</code></p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 多进程日志</span>
+<span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Pool<span class="token punctuation">,</span> Manager
+<span class="token keyword">import</span> logging
+<span class="token keyword">import</span> logging<span class="token punctuation">.</span>handlers
+<span class="token keyword">import</span> threading
+
+
+<span class="token keyword">class</span> <span class="token class-name">SingleQueueHandle</span><span class="token punctuation">(</span>logging<span class="token punctuation">.</span>handlers<span class="token punctuation">.</span>QueueHandler<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;日志队列单例&quot;&quot;&quot;</span>
+    _instance_lock <span class="token operator">=</span> threading<span class="token punctuation">.</span>Lock<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__int__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> queue<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>queue<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__new__</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>SingleQueueHandle<span class="token punctuation">,</span> <span class="token string">&quot;_instance&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">with</span> SingleQueueHandle<span class="token punctuation">.</span>_instance_lock<span class="token punctuation">:</span>
+                <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>SingleQueueHandle<span class="token punctuation">,</span> <span class="token string">&quot;_instance&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    SingleQueueHandle<span class="token punctuation">.</span>_instance <span class="token operator">=</span> <span class="token builtin">object</span><span class="token punctuation">.</span>__new__<span class="token punctuation">(</span>cls<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> SingleQueueHandle<span class="token punctuation">.</span>_instance
+
+
+<span class="token keyword">def</span> <span class="token function">get_logger</span><span class="token punctuation">(</span>lq<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;获取日志对象&quot;&quot;&quot;</span>
+    qh <span class="token operator">=</span> SingleQueueHandle<span class="token punctuation">(</span>lq<span class="token punctuation">)</span>
+    logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>qh<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> logger
+
+
+<span class="token keyword">def</span> <span class="token function">logger_thread</span><span class="token punctuation">(</span>lq<span class="token punctuation">,</span> logger<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;日志处理线程&quot;&quot;&quot;</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">&quot;logger thread start&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        record <span class="token operator">=</span> lq<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> record <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">&quot;logger thread end&quot;</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        logger<span class="token punctuation">.</span>handle<span class="token punctuation">(</span>record<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">worker_process</span><span class="token punctuation">(</span>lq<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    logger <span class="token operator">=</span> get_logger<span class="token punctuation">(</span>lq<span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">'debug message'</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'info message'</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">'warn message'</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">'error message'</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>critical<span class="token punctuation">(</span><span class="token string">'critical message'</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token string">'simple_example'</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span>
+    ch <span class="token operator">=</span> logging<span class="token punctuation">.</span>StreamHandler<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ch<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span>
+    formatter <span class="token operator">=</span> logging<span class="token punctuation">.</span>Formatter<span class="token punctuation">(</span><span class="token string">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="token punctuation">)</span>
+    ch<span class="token punctuation">.</span>setFormatter<span class="token punctuation">(</span>formatter<span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>ch<span class="token punctuation">)</span>
+
+    logger_queue <span class="token operator">=</span> Manager<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Queue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    lt <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>logger_thread<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>logger_queue<span class="token punctuation">,</span> logger<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    lt<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    p <span class="token operator">=</span> Pool<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'start multiprocessing'</span><span class="token punctuation">)</span>
+    p<span class="token punctuation">.</span>apply_async<span class="token punctuation">(</span>worker_process<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>logger_queue<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    p<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    logger_queue<span class="token punctuation">.</span>put<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+    lt<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div></div> <!----> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/python/skill/列表间比较差异性.html" class="prev">
+        列表间比较差异性
+      </a></span> <span class="next"><a href="/python/skill/正则表达式匹配例子.html">
+        正则表达式匹配例子
+      </a>
+      →
+    </span></p></div> <div class="page-footer"><ul class="inner"><li>Theme by <a href="https://github.com/qcyblm/vuepress-theme-vpx" title="本站主题" target="_blank" rel="noopener noreferrer">VPX</a></li> <li>Powered by <a href="https://www.vuepress.cn/" target="_blank" rel="noopener noreferrer">VuePress</a></li> <!----> <li>
+      © 2018-2021
+      <a href="https://xuqilong.top" target="_blank" rel="noopener noreferrer"> Copyright © 2021-present Qilong Xu © 2019 </a></li> <li><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer"><!---->  粤ICP备19034953号-1
+      </a></li> </ul></div> </main> <!----></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.b8069efc.js" defer></script><script src="/assets/js/2.463f0d24.js" defer></script><script src="/assets/js/53.b63a6ed6.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>正则表达式匹配例子 | FeelingLive</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/assets/img/logo/logo.png">
+    <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?966c32065299cfcd0ae5ae2eae1aa280";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();            
+          </script>
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.57bcb71c.css" as="style"><link rel="preload" href="/assets/js/app.b8069efc.js" as="script"><link rel="preload" href="/assets/js/2.463f0d24.js" as="script"><link rel="preload" href="/assets/js/54.fbb07875.js" as="script"><link rel="prefetch" href="/assets/js/10.0762cba9.js"><link rel="prefetch" href="/assets/js/11.4708d5da.js"><link rel="prefetch" href="/assets/js/12.c6cafa54.js"><link rel="prefetch" href="/assets/js/13.d8200bdf.js"><link rel="prefetch" href="/assets/js/14.8064c10f.js"><link rel="prefetch" href="/assets/js/15.9243c1a6.js"><link rel="prefetch" href="/assets/js/16.f6f1013c.js"><link rel="prefetch" href="/assets/js/17.fc230ff5.js"><link rel="prefetch" href="/assets/js/18.f5401d4b.js"><link rel="prefetch" href="/assets/js/19.97ad76e6.js"><link rel="prefetch" href="/assets/js/20.c04d5e36.js"><link rel="prefetch" href="/assets/js/21.3a377e15.js"><link rel="prefetch" href="/assets/js/22.4f0e9918.js"><link rel="prefetch" href="/assets/js/23.8f5b85c7.js"><link rel="prefetch" href="/assets/js/24.e0dea9d9.js"><link rel="prefetch" href="/assets/js/25.6e5a4514.js"><link rel="prefetch" href="/assets/js/26.f1eb71b3.js"><link rel="prefetch" href="/assets/js/27.648fe148.js"><link rel="prefetch" href="/assets/js/28.0f4106c7.js"><link rel="prefetch" href="/assets/js/29.13fab01e.js"><link rel="prefetch" href="/assets/js/3.42c89626.js"><link rel="prefetch" href="/assets/js/30.776c58af.js"><link rel="prefetch" href="/assets/js/31.9d1301f0.js"><link rel="prefetch" href="/assets/js/32.720f8e3c.js"><link rel="prefetch" href="/assets/js/33.3e536bad.js"><link rel="prefetch" href="/assets/js/34.eb929122.js"><link rel="prefetch" href="/assets/js/35.d6c75691.js"><link rel="prefetch" href="/assets/js/36.d1359dcd.js"><link rel="prefetch" href="/assets/js/37.af9dcad6.js"><link rel="prefetch" href="/assets/js/38.4dcdfb0e.js"><link rel="prefetch" href="/assets/js/39.a11a56c7.js"><link rel="prefetch" href="/assets/js/4.32e9b2cd.js"><link rel="prefetch" href="/assets/js/40.99b7368a.js"><link rel="prefetch" href="/assets/js/41.6b4e41f7.js"><link rel="prefetch" href="/assets/js/42.01f4bb4d.js"><link rel="prefetch" href="/assets/js/43.395f4458.js"><link rel="prefetch" href="/assets/js/44.6ffa66fa.js"><link rel="prefetch" href="/assets/js/45.e29df2ce.js"><link rel="prefetch" href="/assets/js/46.72ff2f55.js"><link rel="prefetch" href="/assets/js/47.8ffb0064.js"><link rel="prefetch" href="/assets/js/48.2ca0eabc.js"><link rel="prefetch" href="/assets/js/49.9b2c63ae.js"><link rel="prefetch" href="/assets/js/5.92edf24a.js"><link rel="prefetch" href="/assets/js/50.115e85f5.js"><link rel="prefetch" href="/assets/js/51.8f5cbf89.js"><link rel="prefetch" href="/assets/js/52.4a6fde6e.js"><link rel="prefetch" href="/assets/js/53.b63a6ed6.js"><link rel="prefetch" href="/assets/js/55.e995daf3.js"><link rel="prefetch" href="/assets/js/56.15951fbe.js"><link rel="prefetch" href="/assets/js/57.4c91e795.js"><link rel="prefetch" href="/assets/js/58.02114ca3.js"><link rel="prefetch" href="/assets/js/6.0b766ead.js"><link rel="prefetch" href="/assets/js/7.beb00bfa.js"><link rel="prefetch" href="/assets/js/8.e469995f.js"><link rel="prefetch" href="/assets/js/9.35927e25.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.57bcb71c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo/logo.png" alt="FeelingLive" class="logo"> <span class="site-name">FeelingLive</span></a> <nav class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <ul class="nav-links can-hide"><li class="nav-item"><a href="/" class="nav-link"><!----> <span>主页</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><!----> <span class="title">
+      Python
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><!----> <span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/python/coroutine/" class="nav-link"><!----> <span>协程</span></a></li><li class="dropdown-item"><!----> <a href="/python/advance/" class="nav-link"><!----> <span>进阶</span></a></li><li class="dropdown-item"><!----> <a href="/python/standard/" class="nav-link"><!----> <span>标准库</span></a></li><li class="dropdown-item"><!----> <a href="/python/restFramework/" class="nav-link"><!----> <span>REST Framework</span></a></li><li class="dropdown-item"><!----> <a href="/python/utils/" class="nav-link"><!----> <span>各种工具</span></a></li><li class="dropdown-item"><!----> <a href="/python/skill/" class="nav-link router-link-active"><!----> <span>使用技巧和例子</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title">
+      Java
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><!----> <span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/basis/" class="nav-link"><!----> <span>基础</span></a></li></ul></div></li><li class="nav-item"><a href="/linux/" class="nav-link"><!----> <span>Linux</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title">
+      中间件
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><!----> <span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/middle/elasticsearch/" class="nav-link"><!----> <span>Elasticsearch</span></a></li><li class="dropdown-item"><!----> <a href="/middle/nginx/" class="nav-link"><!----> <span>Nginx</span></a></li><li class="dropdown-item"><!----> <a href="/middle/kafka/" class="nav-link"><!----> <span>Kafka</span></a></li><li class="dropdown-item"><!----> <a href="/middle/f5/" class="nav-link"><!----> <span>F5</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title">
+      数据库
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><!----> <span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/database/mysql/" class="nav-link"><!----> <span>MySQL</span></a></li><li class="dropdown-item"><!----> <a href="/database/redis/" class="nav-link"><!----> <span>Redis</span></a></li></ul></div></li><li class="nav-item"><a href="https://github.com/xuqil" target="_blank" rel="noopener noreferrer" class="nav-link external"><!----> <span>Git Hub</span> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <!----></ul> <div class="theme-switcher"><a class="switch dark"><span><i aria-hidden="true" class="fa fa-moon"></i></span></a></div></nav></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!----> <ul class="nav-links"><li class="nav-item"><a href="/" class="nav-link"><!----> <span>主页</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><!----> <span class="title">
+      Python
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><!----> <span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/python/coroutine/" class="nav-link"><!----> <span>协程</span></a></li><li class="dropdown-item"><!----> <a href="/python/advance/" class="nav-link"><!----> <span>进阶</span></a></li><li class="dropdown-item"><!----> <a href="/python/standard/" class="nav-link"><!----> <span>标准库</span></a></li><li class="dropdown-item"><!----> <a href="/python/restFramework/" class="nav-link"><!----> <span>REST Framework</span></a></li><li class="dropdown-item"><!----> <a href="/python/utils/" class="nav-link"><!----> <span>各种工具</span></a></li><li class="dropdown-item"><!----> <a href="/python/skill/" class="nav-link router-link-active"><!----> <span>使用技巧和例子</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title">
+      Java
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><!----> <span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/basis/" class="nav-link"><!----> <span>基础</span></a></li></ul></div></li><li class="nav-item"><a href="/linux/" class="nav-link"><!----> <span>Linux</span></a></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title">
+      中间件
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><!----> <span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/middle/elasticsearch/" class="nav-link"><!----> <span>Elasticsearch</span></a></li><li class="dropdown-item"><!----> <a href="/middle/nginx/" class="nav-link"><!----> <span>Nginx</span></a></li><li class="dropdown-item"><!----> <a href="/middle/kafka/" class="nav-link"><!----> <span>Kafka</span></a></li><li class="dropdown-item"><!----> <a href="/middle/f5/" class="nav-link"><!----> <span>F5</span></a></li></ul></div></li><li class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title">
+      数据库
+    </span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><!----> <span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/database/mysql/" class="nav-link"><!----> <span>MySQL</span></a></li><li class="dropdown-item"><!----> <a href="/database/redis/" class="nav-link"><!----> <span>Redis</span></a></li></ul></div></li><li class="nav-item"><a href="https://github.com/xuqil" target="_blank" rel="noopener noreferrer" class="nav-link external"><!----> <span>Git Hub</span> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <!----></ul>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><i></i> <span>使用技巧和例子</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/python/skill/" aria-current="page" class="sidebar-link">python的一些使用技巧和例子</a></li><li><a href="/python/skill/列表间比较差异性.html" class="sidebar-link">列表间比较差异性</a></li><li><a href="/python/skill/多进程日志.html" class="sidebar-link">多进程日志</a></li><li><a href="/python/skill/正则表达式匹配例子.html" class="active sidebar-link">正则表达式匹配例子</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-vpx-content content__default"><h1 id="正则表达式匹配例子"><a href="#正则表达式匹配例子" class="header-anchor">#</a> 正则表达式匹配例子</h1> <h3 id="特殊文件配置匹配"><a href="#特殊文件配置匹配" class="header-anchor">#</a> 特殊文件配置匹配</h3> <p>匹配文件中<code>[特定字符串开头] [类型] [名称] [{值}]</code></p> <p>如从如下配置文件中匹配<code>ltm node 名称 {空值}</code>和<code>ltm node 名称 {有换行的值}</code></p> <div class="language- extra-class"><pre class="language-text"><code>ltm node /Common/test4 {
+    address 192.168.56.22
+}
+ltm node /Common/test5 { }
+ltm pool /Common/test1 { }
+ltm pool /Common/mypool {
+    description 测试pool
+    load-balancing-mode ratio-member
+    members {
+        /Common/test:80 {
+            address 192.168.56.20
+            description 测试number
+            priority-group 1
+            rate-limit 1
+            ratio 3
+        }
+        /Common/test22:80 {
+            address 192.168.56.22
+            description 测试number2
+        }
+        /Common/test3:80 {
+            address 192.168.56.11
+            description 测试三
+        }
+        /Common/test6:80 {
+            address 192.168.56.12
+            description 111
+            monitor /Common/http
+        }
+    }
+    min-active-members 2
+    monitor /Common/tcp
+    queue-depth-limit 2
+    queue-time-limit 1
+    reselect-tries 3
+}
+ltm pool /Common/test {
+    monitor /Common/http
+}
+ltm pool /Common/test5 { }
+ltm rule /Common/test {
+
+}
+</code></pre></div><p><strong>思路</strong></p> <p>开头的特定字符串和名字比较容易匹配，但是后面的值有两种情况。</p> <ul><li><p>第一种是空值，只有一个大括号括着一个空格<code>{ }</code></p></li> <li><p>第二种是有值的，格式如下</p> <div class="language- extra-class"><pre class="language-text"><code>ltm node 名称 {  #这里有换行
+  值
+} #这里有换行
+</code></pre></div></li></ul> <p>从中可知，<code>{</code>之前的字符串的匹配模式是一样的，不同的是后面。可以分开匹配，或者使用或<code>|</code>一起匹配</p> <h3 id="方案"><a href="#方案" class="header-anchor">#</a> <strong>方案</strong></h3> <p>1、可以两种匹配方式分开匹配</p> <ul><li>匹配空pool：<code>pat = re.compile(r'(?&lt;=ltm\spool\s)(.*?){(\s)}')</code>*</li> <li>匹配非空pool：<code>pat = re.compile(r'(?-s:(?&lt;=ltm\spool\s)(.*?){\n)(.*?)\n}', flags=re.S)</code></li></ul> <p>2、使用<code>|</code>结合两种匹配模式</p> <ul><li>使用：<code>pat = re.compile(r'(?-s:(?&lt;=ltm\spool\s)(.*?){)(\n.*?\n|\s)}', flags=re.S)</code> <ul><li>但当资源非空时，末行会有空行</li></ul></li> <li>使用：<code>pat = re.compile(r'(?-s:(?&lt;=ltm\spool\s)(.*?{))(\n.*?\n}|\s})', flags=re.S)</code> <ul><li>但值的外部加上了<code>{}</code></li></ul></li></ul> <h3 id="说明"><a href="#说明" class="header-anchor">#</a> <strong>说明</strong></h3> <ul><li><code>re.S</code>：让 <code>'.'</code> 特殊字符匹配任何字符，包括换行符；如果没有这个标记，<code>'.'</code> 就匹配 <em>除了</em> 换行符的其他任意字符。对应内联标记 <code>(?s)</code></li> <li><code>(?-s:表达式)</code>：括号里的表达式取消<code>re.S</code>模式，即只能匹配单行字符串</li> <li><code>(?&lt;=ltm\spool\s)</code>：匹配以<code>ltm空格pool空格</code>开头的字符串，但不包含<code>ltm空格pool空格</code></li></ul> <h3 id="示例"><a href="#示例" class="header-anchor">#</a> <strong>示例</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> re
+
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'bigip.conf'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    text <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+pat <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r'(?-s:(?&lt;=ltm\spool\s)(.*?{))(\n.*?\n}|\s})'</span><span class="token punctuation">,</span> flags<span class="token operator">=</span>re<span class="token punctuation">.</span>S<span class="token punctuation">)</span>
+source <span class="token operator">=</span> pat<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> source<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'[source name] </span><span class="token interpolation"><span class="token punctuation">{</span>i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>i<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>输出</strong></p> <div class="language- extra-class"><pre class="language-text"><code>[source name] /Common/test1 {  }
+[source name] /Common/mypool { 
+    description 测试pool
+    load-balancing-mode ratio-member
+    members {
+        /Common/test:80 {
+            address 192.168.56.20
+            description 测试number
+            priority-group 1
+            rate-limit 1
+            ratio 3
+        }
+        /Common/test22:80 {
+            address 192.168.56.22
+            description 测试number2
+        }
+        /Common/test3:80 {
+            address 192.168.56.11
+            description 测试三
+        }
+        /Common/test6:80 {
+            address 192.168.56.12
+            description 111
+            monitor /Common/http
+        }
+    }
+    min-active-members 2
+    monitor /Common/tcp
+    queue-depth-limit 2
+    queue-time-limit 1
+    reselect-tries 3
+}
+[source name] /Common/test { 
+    monitor /Common/http
+}
+[source name] /Common/test5 {  }
+</code></pre></div></div> <!----> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/python/skill/多进程日志.html" class="prev">
+        多进程日志
+      </a></span> <!----></p></div> <div class="page-footer"><ul class="inner"><li>Theme by <a href="https://github.com/qcyblm/vuepress-theme-vpx" title="本站主题" target="_blank" rel="noopener noreferrer">VPX</a></li> <li>Powered by <a href="https://www.vuepress.cn/" target="_blank" rel="noopener noreferrer">VuePress</a></li> <!----> <li>
+      © 2018-2021
+      <a href="https://xuqilong.top" target="_blank" rel="noopener noreferrer"> Copyright © 2021-present Qilong Xu © 2019 </a></li> <li><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer"><!---->  粤ICP备19034953号-1
+      </a></li> </ul></div> </main> <!----></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.b8069efc.js" defer></script><script src="/assets/js/2.463f0d24.js" defer></script><script src="/assets/js/54.fbb07875.js" defer></script>
+  </body>
+</html>
